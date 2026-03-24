@@ -4,18 +4,17 @@ Skaner dla wyrażeń matematycznych, który przekształca ciąg znaków wejścio
 
 Język implementacji: ***Python***
 
-
 ## Zbiór Tokenów
-Poniższa tabela przedstawia zbiór tokenów rozpoznawanych przez skaner, ich nazwy oraz opis.
+Poniższa tabela przedstawia zbiór tokenów rozpoznawanych przez skaner, ich nazwy, opisy oraz użyte kolory.
 
-| Nazwa | Opis | Przykład |
+| Nazwa | Opis | Kolor (HTML) |
 | :--- | :--- | :--- |
-| **LICZBA** | Liczba całkowita (ciąg cyfr). | `1`, `64`, `123` |
-| **ID** | Identyfikator / zmienna (zaczyna się od litery, potem dowolne litery i cyfry). | `x`, `b2`, `wynik` |
-| **PLUS** | Operator dodawania `+`. | `+` |
-| **MINUS** | Operator odejmowania `-`. | `-` |
-| **MNOZENIE** | Operator mnożenia `*`. | `*` |
-| **DZIELENIE** | Operator dzielenia `/`. | `/` |
-| **LNAWIAS** | Lewy nawias okrągły `(`. | `(` |
-| **PNAWIAS** | Prawy nawias okrągły `)`. | `)` |
-| **BLAD** | Token błędu (nieznany znak lub niepoprawny format liczby). | `$`, `#`, `12ab` |
+| **LICZBA** | Liczba całkowita. | **Zielony** (`green`) |
+| **ID** | Identyfikator / zmienna. | **Niebieski** (`blue`) |
+| **PLUS** | Operator dodawania `+`. | **Pomarańczowy** (`orange`) |
+| **MINUS** | Operator odejmowania `-`. | **Fioletowy** (`purple`) |
+| **MNOZENIE** | Operator mnożenia `*`. | **Magenta** (`magenta`) |
+| **DZIELENIE** | Operator dzielenia `/`. | **Cyjan** (`cyan`) |
+| **LNAWIAS** | Lewy nawias okrągły `(`. | **Brązowy** (`brown`) |
+| **PNAWIAS** | Prawy nawias okrągły `)`. | **Różowy** (`deeppink`) |
+| **BLAD** | Nieznany znak lub zły format liczby. | **Czerwony** (`red`) |

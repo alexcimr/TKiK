@@ -1,11 +1,15 @@
-from scanner import Scanner
+from reporter import Reporter
 
 
 def main():
-    equation = "2 +3   + a * (76+ 8  / 3.1) $+ 3 * (9 - 3) 1ab"
-    scanner = Scanner(equation)
-    scanner.scan()
-    scanner.show_tokens()
+    reporter = Reporter()
+
+    text = "2 + &&3 * (10 1a / 2)"
+    reporter.print_tokens(text)
+
+    in_file = "dane.txt"
+    out_file = "wynik.html"
+    reporter.to_html(in_file, out_file)
 
 if __name__ == "__main__":
     main()

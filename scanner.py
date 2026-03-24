@@ -11,12 +11,18 @@ class Scanner:
         ')': TokenType.PNAWIAS,
     }
 
-    def __init__(self, equation: str):
-        self.equation = equation
+    def __init__(self):
         self.tokens: list[Token] = []
         self.pos = 0
 
-    def scan(self):
+    def reset_tokens(self):
+        self.tokens = []
+        self.pos = 0
+
+    def scan(self, equation: str):
+        self.equation = equation
+        self.reset_tokens()
+
         while True:
             token = self.next_token()
             if token is None:
@@ -32,7 +38,7 @@ class Scanner:
             return None
 
         char = self.equation[self.pos]
-        start_col = self.pos + 1
+        start_pos = self.pos
 
         # Liczby
         if char.isdigit():
@@ -46,9 +52,9 @@ class Scanner:
                 while self.pos < len(self.equation) and self.equation[self.pos].isalnum():
                     token_val += self.equation[self.pos]
                     self.pos += 1
-                return Token(TokenType.BLAD, f"Niepoprawny format liczby '{token_val}' w kolumnie {start_col}")
+                return Token(TokenType.BLAD, token_val, start_pos, self.pos)
 
-            return Token(TokenType.LICZBA, int(token_val))
+            return Token(TokenType.LICZBA, token_val, start_pos, self.pos)
 
         # ID - zmienne
         if char.isalpha():
@@ -57,20 +63,16 @@ class Scanner:
                 token_val += self.equation[self.pos]
                 self.pos += 1
 
-            return Token(TokenType.ID, token_val)
+            return Token(TokenType.ID, token_val, start_pos, self.pos)
 
         # Operatory matematyczne
         if char in self.math_chars:
             self.pos += 1
-            return Token(self.math_chars[char], char)
+            return Token(self.math_chars[char], char, start_pos, self.pos)
 
         # Obsluga bledu
         self.pos += 1
-        return Token(TokenType.BLAD, f"Nieznany znak '{char}' w kolumnie {start_col}")
-
-    def show_tokens(self):
-        for token in self.tokens:
-            print(token)
+        return Token(TokenType.BLAD, char, start_pos, self.pos)
 
     def get_tokens(self):
         return self.tokens
