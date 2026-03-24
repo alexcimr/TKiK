@@ -60,5 +60,5 @@ class Reporter:
             # <pre>: zachowanie układu (znaki białe)
             # monospace: czcionka stałoszerokościowa
             # font-size: wielkość czcionki
-            # line-height przerwa między wierszami
+            # line-height: przerwa między wierszami
             f.write(f"<pre style='font-family: monospace; font-size: 20px; line-height: 1.5;'>{html_body}</pre>")
